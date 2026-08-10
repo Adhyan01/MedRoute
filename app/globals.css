@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --color-primary-teal: #087F8C;
+  --color-navy: #172033;
+  --color-blue: #2563EB;
+  --color-bg: #F4F8FA;
+  --color-white: #FFFFFF;
+  --color-border: #E5EAF0;
+  --base-font-size: 16px;
+}
+
+html {
+  font-size: var(--base-font-size, 16px);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #F4F8FA;
+  color: #172033;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #172033;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ==========================================================================
+   HIDE NEXT.JS DEV OVERLAY INDICATORS & BOTTOM RIGHT BADGES
+   ========================================================================== */
+nextjs-portal,
+[data-nextjs-dialog-overlay],
+[data-nextjs-toast],
+div[class*="next-mark"],
+div[class*="nextjs-toast"],
+div[class*="dev-indicator"],
+#next-mark {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+/* ==========================================================================
+   HIGH CONTRAST MODE
+   ========================================================================== */
+.high-contrast, [data-contrast="high"] {
+  --color-navy: #000000;
+  --color-border: #000000;
+}
+
+.high-contrast .card,
+.high-contrast .card-shell,
+[data-contrast="high"] .card,
+[data-contrast="high"] .card-shell {
+  border: 3px solid #000000 !important;
+  box-shadow: none !important;
+}
+
+.high-contrast p, .high-contrast span {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   REDUCE MOTION MODE
+   ========================================================================== */
+.reduce-motion *,
+.reduce-motion .pulse-dot,
+.reduce-motion .emergency-pulse,
+[data-motion="reduce"] *,
+[data-motion="reduce"] .pulse-dot,
+[data-motion="reduce"] .emergency-pulse {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ==========================================================================
+   ULTRA-PREMIUM DARK THEME (Linear / Apple Health / Vercel Dark Style)
+   ========================================================================== */
+html.dark, [data-theme="dark"] {
+  --color-bg: #0B0F19;
+  --color-navy: #F8FAFC;
+  --color-white: #111827;
+  --color-border: #1F2937;
+  background-color: #0B0F19 !important;
+  color: #F8FAFC !important;
+}
+
+html.dark body, body.dark {
+  background-color: #0B0F19 !important;
+  color: #F8FAFC !important;
+}
+
+/* Grid Pattern Background in Dark Mode */
+html.dark .bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Header in Dark Mode */
+html.dark .header-glass {
+  background: rgba(11, 15, 25, 0.88) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+/* Dark Mode Cards & Shells */
+html.dark .card,
+html.dark .card-shell {
+  background: rgba(17, 24, 39, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #F8FAFC !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5) !important;
+}
+
+html.dark .card-hover:hover {
+  border-color: rgba(8, 127, 140, 0.5) !important;
+  box-shadow: 0 16px 36px -6px rgba(8, 127, 140, 0.25) !important;
+}
+
+/* Typography in Dark Mode */
+html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
+  color: #F8FAFC !important;
+}
+
+html.dark p {
+  color: #94A3B8;
+}
+
+/* Badges in Dark Mode */
+html.dark .hero-pill-badge {
+  background: rgba(17, 24, 39, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #E2E8F0 !important;
+}
+
+html.dark .badge-available {
+  background: rgba(6, 78, 59, 0.6) !important;
+  color: #34D399 !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+html.dark .badge-limited {
+  background: rgba(120, 53, 15, 0.6) !important;
+  color: #FBBF24 !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+html.dark .badge-critical {
+  background: rgba(127, 29, 29, 0.6) !important;
+  color: #FCA5A5 !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+html.dark .badge-reserved {
+  background: rgba(30, 58, 138, 0.6) !important;
+  color: #93C5FD !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Buttons in Dark Mode */
+html.dark .btn-hero-secondary {
+  background: rgba(17, 24, 39, 0.9) !important;
+  color: #F8FAFC !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+html.dark .btn-hero-secondary:hover {
+  background: rgba(31, 41, 55, 0.9) !important;
+  border-color: rgba(8, 127, 140, 0.6) !important;
+}
+
+html.dark .btn-hero-emergency {
+  box-shadow: 0 0 25px rgba(239, 35, 60, 0.45) !important;
+}
+
+/* Category Cards in Dark Mode */
+html.dark .category-card {
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+html.dark .category-card:hover {
+  border-color: rgba(8, 127, 140, 0.6) !important;
+  background: rgba(8, 127, 140, 0.1) !important;
+}
+
+/* Footer in Dark Mode */
+html.dark footer {
+  background: #090D16 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Container */
+.container-xl {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Glass Header */
+.header-glass {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(229, 234, 240, 0.9);
+}
+
+/* Red Emergency CTA Button */
+.btn-hero-emergency {
+  background: linear-gradient(135deg, #FF4B4B 0%, #EF233C 50%, #D90429 100%);
+  color: #FFFFFF !important;
+  border-radius: 14px;
+  font-weight: 700;
+  height: 52px;
+  padding: 0 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px -4px rgba(239, 35, 60, 0.35);
+  width: auto;
+  max-width: max-content;
+}
+
+.btn-hero-emergency:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -4px rgba(239, 35, 60, 0.45);
+  background: linear-gradient(135deg, #ff5c5c 0%, #ef233c 100%);
+}
+
+/* White Secondary CTA Button */
+.btn-hero-secondary {
+  background: #FFFFFF;
+  color: #172033 !important;
+  border-radius: 14px;
+  font-weight: 600;
+  height: 52px;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  border: 1.5px solid #E2E8F0;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  width: auto;
+  max-width: max-content;
+}
+
+.btn-hero-secondary:hover {
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+/* Pill Badges */
+.hero-pill-badge {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+}
+
+/* Pulsing live dot */
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.9); }
+}
+
+.pulse-dot {
+  animation: pulse-live 2s ease-in-out infinite;
+}
+
+/* Card Shell */
+.card-shell {
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid #E5EAF0;
+  box-shadow: 0 10px 30px -5px rgba(23, 32, 51, 0.05);
+}
+
+/* Category card */
+.category-card {
+  border-radius: 18px;
+  padding: 18px 12px;
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -4px rgba(8, 127, 140, 0.12);
+}
+
+/* Desktop vs Mobile Nav Display Rules */
+.desktop-nav-only {
+  display: flex !important;
+}
+
+.mobile-menu-btn-only {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid #E5EAF0;
+    z-index: 50;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  html.dark .mobile-nav {
+    background: rgba(17, 24, 39, 0.96) !important;
+    border-top-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .desktop-nav-only {
+    display: none !important;
+  }
+
+  .mobile-menu-btn-only {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none !important;
+  }
+}
